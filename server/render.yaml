@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: shashank-portfolio-api
+    name: sushashank-portfolio-api
     env: node
     plan: free
     buildCommand: npm install
-    startCommand: npm start/npm run dev
+    startCommand: npm start
     envVars:
       - key: NODE_VERSION
         value: 18.x
