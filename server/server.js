@@ -3,9 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import * as functions from 'firebase-functions';
 import feedbackRoutes from './routes/feedback.js';
-import firebaseApp from './firebase-config.js';
 
 // Load environment variables
 dotenv.config();
@@ -68,5 +66,8 @@ app.use((req, res) => {
   });
 });
 
-// Export the Express app as a Firebase Cloud Function
-export const api = functions.https.onRequest(app);
+// Start the server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
