@@ -12,7 +12,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://my-portfolio.windsurf.build', 'http://localhost:5173', 'http://localhost:5174'],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(express.json());
 

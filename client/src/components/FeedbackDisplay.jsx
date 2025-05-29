@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from '../api';
 import '../styles/FeedbackDisplay.css';
 
 const FeedbackDisplay = () => {
@@ -11,7 +12,7 @@ const FeedbackDisplay = () => {
     const fetchFeedbacks = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/feedback');
+        const response = await axios.get(`${API_URL}/api/feedback`);
         
         if (response.data.success) {
           // Get the most recent 5 feedbacks

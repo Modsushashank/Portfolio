@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from '../api';
 import '../styles/FeedbackForm.css';
 
 const FeedbackForm = () => {
@@ -25,7 +26,7 @@ const FeedbackForm = () => {
   useEffect(() => {
     const checkServerStatus = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api');
+        const response = await axios.get(`${API_URL}/api`);
         setServerStatus({
           checked: true,
           online: true,
@@ -56,7 +57,7 @@ const FeedbackForm = () => {
     setStatus(prevStatus => ({ ...prevStatus, submitting: true }));
     
     try {
-      const response = await axios.post('http://localhost:5000/api/feedback', formData);
+      const response = await axios.post(`${API_URL}/api/feedback`, formData);
       
       // Update DB connection status based on response
       setServerStatus(prev => ({

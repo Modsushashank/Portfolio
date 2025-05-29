@@ -54,122 +54,108 @@ const Skills = () => {
         <h1>My Skills</h1>
         <p>A comprehensive overview of my technical and professional skills</p>
       </div>
-      
-      <div className="skills-grid-container">
-        <div className="skills-intro">
-          <div className="skills-text">
-            <h2>Technical Proficiency</h2>
-            <p>
-              As a full-stack developer, I've cultivated a diverse skill set that spans 
-              frontend and backend technologies. My focus has been on the MERN stack 
-              (MongoDB, Express, React, Node.js), but I'm always expanding my knowledge 
-              to stay current with industry trends and best practices.
-            </p>
-            <p>
-              I believe in writing clean, maintainable code and building applications 
-              that are not only functional but also provide excellent user experiences.
-            </p>
-          </div>
+      <div className="skills-intro">
+        <div className="skills-text">
+          <h2>Technical Proficiency</h2>
+          <p>
+            As a full-stack developer, I've cultivated a diverse skill set that spans 
+            frontend and backend technologies. My focus has been on the MERN stack 
+            (MongoDB, Express, React, Node.js), but I'm always expanding my knowledge 
+            to stay current with industry trends and best practices.
+          </p>
+          <p>
+            I believe in writing clean, maintainable code and building applications 
+            that are not only functional but also provide excellent user experiences.
+          </p>
         </div>
-        
+      </div>
+      
+      <div className="skill-grid">
         <div className="frontend-skills">
           <h2>Frontend Development</h2>
           <div className="skills-list">
-            {skillCategories[0].skills.map((skill, skillIndex) => (
-              <div className="skill-item" key={skillIndex}>
-                <div className="skill-info">
-                  <h3>{skill.name}</h3>
-                  <span className="skill-percentage">{skill.level}%</span>
-                </div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress" 
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>React</h3>
               </div>
-            ))}
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>JavaScript</h3>
+              </div>
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>CSS</h3>
+              </div>
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>HTML5</h3>
+              </div>
+            </div>
           </div>
         </div>
         
         <div className="backend-skills">
           <h2>Backend Development</h2>
           <div className="skills-list">
-            {skillCategories[1].skills.map((skill, skillIndex) => (
-              <div className="skill-item" key={skillIndex}>
-                <div className="skill-info">
-                  <h3>{skill.name}</h3>
-                  <span className="skill-percentage">{skill.level}%</span>
-                </div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress" 
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>Node.js</h3>
               </div>
-            ))}
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>Express</h3>
+              </div>
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>MongoDB</h3>
+              </div>
+            </div>
           </div>
         </div>
         
         <div className="tools-skills">
           <h2>Tools & Technologies</h2>
           <div className="skills-list">
-            {skillCategories[2].skills.map((skill, skillIndex) => (
-              <div className="skill-item" key={skillIndex}>
-                <div className="skill-info">
-                  <h3>{skill.name}</h3>
-                  <span className="skill-percentage">{skill.level}%</span>
-                </div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress" 
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>Git/GitHub</h3>
               </div>
-            ))}
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>VS Code</h3>
+              </div>
+            </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>npm/Yarn</h3>
+              </div>
+            </div>
           </div>
         </div>
         
         <div className="soft-skills">
           <h2>Soft Skills</h2>
           <div className="skills-list">
-            {skillCategories[3].skills.map((skill, skillIndex) => (
-              <div className="skill-item" key={skillIndex}>
-                <div className="skill-info">
-                  <h3>{skill.name}</h3>
-                  <span className="skill-percentage">{skill.level}%</span>
-                </div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress" 
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>Problem Solving</h3>
               </div>
-            ))}
-          </div>
-        </div>
-        
-        <div className="certifications">
-          <h2>Certifications & Education</h2>
-          <div className="certification-items">
-            <div className="certification-item">
-              <h3>Bachelor of Technology in Computer Science</h3>
-              <p>PARUL University, 2026</p>
             </div>
-            <div className="certification-item">
-              <h3>Web Development Fundamentals</h3>
-              {/* <p>Coursera, 2023</p> */}
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>Communication</h3>
+              </div>
             </div>
-            <div className="certification-item">
-              <h3>JavaScript Algorithms and Data Structures</h3>
-              {/* <p>freeCodeCamp, 2022</p> */}
-            </div>
-            <div className="certification-item">
-              <h3>Full Stack Web Development</h3>
-              {/* <p>freeCodeCamp, 2022</p> */}
+            <div className="skill-item">
+              <div className="skill-info">
+                <h3>Team Collaboration</h3>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import FeedbackForm from '../components/FeedbackForm';
-import FeedbackDisplay from '../components/FeedbackDisplay';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -54,43 +53,75 @@ const Home = () => {
       
       <div className="section skills-overview">
         <h2>My Skills</h2>
-        <div className="skills-container">
-          <div className="skill-category">
+        <div className="skills-cards">
+          <div className="skill-card">
             <h3>Frontend</h3>
-            <ul>
-              <li>React-Vite</li>
-              <li>JavaScript</li>
-              <li>HTML/CSS</li>
-              <li>Responsive Design</li>
+            <ul className="skill-list">
+              <li><span className="skill-arrow">▸</span> React-Vite</li>
+              <li><span className="skill-arrow">▸</span> JavaScript</li>
+              <li><span className="skill-arrow">▸</span> HTML/CSS</li>
+              <li><span className="skill-arrow">▸</span> Responsive Design</li>
             </ul>
           </div>
           
-          <div className="skill-category">
+          <div className="skill-card">
             <h3>Backend</h3>
-            <ul>
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>MongoDB</li>
-              <li>RESTful APIs</li>
+            <ul className="skill-list">
+              <li><span className="skill-arrow">▸</span> Node.js</li>
+              <li><span className="skill-arrow">▸</span> Express</li>
+              <li><span className="skill-arrow">▸</span> MongoDB</li>
+              <li><span className="skill-arrow">▸</span> RESTful APIs</li>
             </ul>
           </div>
           
-          <div className="skill-category">
+          <div className="skill-card">
             <h3>Tools & Others</h3>
-            <ul>
-              <li>Git & GitHub</li>
-              <li>VS Code</li>
-              <li>Agile/Scrum</li>
-              <li>Problem Solving</li>
+            <ul className="skill-list">
+              <li><span className="skill-arrow">▸</span> Git & GitHub</li>
+              <li><span className="skill-arrow">▸</span> VS Code</li>
+              <li><span className="skill-arrow">▸</span> Problem Solving</li>
             </ul>
           </div>
         </div>
-        <Link to="/skills" className="btn btn-outline">View All Skills</Link>
+        <div className="center-button">
+          <Link to="/skills" className="btn btn-outline">View All Skills</Link>
+        </div>
       </div>
       
-      <div className="section testimonials">
-        <FeedbackDisplay />
-      </div>
+      {/* <div className="section testimonials">
+        <h2>Client Feedback</h2>
+        <div className="client-testimonials">
+          <div className="testimonial-card">
+            <div className="testimonial-content">
+              <p>"Working with Shashank was a great experience. His attention to detail and technical skills helped us launch our project ahead of schedule."</p>
+            </div>
+            <div className="testimonial-author">
+              <h4>John Doe</h4>
+              <p>Tech Solutions Inc.</p>
+            </div>
+          </div>
+          
+          <div className="testimonial-card">
+            <div className="testimonial-content">
+              <p>"Shashank delivered an exceptional website that perfectly captured our brand. His communication throughout the project was excellent."</p>
+            </div>
+            <div className="testimonial-author">
+              <h4>Sarah Johnson</h4>
+              <p>Creative Designs</p>
+            </div>
+          </div>
+          
+          <div className="testimonial-card">
+            <div className="testimonial-content">
+              <p>"The web application Shashank built for us has significantly improved our workflow. His problem-solving skills are impressive."</p>
+            </div>
+            <div className="testimonial-author">
+              <h4>Michael Chen</h4>
+              <p>Data Analytics Pro</p>
+            </div>
+          </div>
+        </div>
+      </div> */}
       
       <div className="section feedback">
         <h2>I'd Love to Hear From You</h2>
