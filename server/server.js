@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import * as functions from 'firebase-functions';
 import feedbackRoutes from './routes/feedback.js';
+import firebaseApp from './firebase-config.js';
 
 // Load environment variables
 dotenv.config();
