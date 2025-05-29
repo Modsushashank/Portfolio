@@ -1,0 +1,364 @@
+.resume-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.resume-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.resume-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.resume-header p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.resume-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.resume-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 180px;
+  text-align: center;
+}
+
+.download-btn {
+  background-color: #0099ff;
+  color: white;
+}
+
+.download-btn:hover {
+  background-color: #007acc;
+}
+
+.view-btn {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.view-btn:hover {
+  background-color: #e9ecef;
+}
+
+/* Resume Viewer Modal */
+.resume-viewer-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.resume-viewer-content {
+  background-color: white;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.resume-viewer-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.4rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.resume-content-preview {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 70px);
+}
+
+.resume-download-prompt {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.resume-download-prompt p {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.download-btn i {
+  margin-right: 0.5rem;
+}
+
+.resume-pdf-container {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
+
+.resume-content {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+
+.resume-section {
+  margin-bottom: 2.5rem;
+}
+
+.resume-section:last-child {
+  margin-bottom: 0;
+}
+
+.resume-section h2 {
+  font-size: 1.8rem;
+  color: #333;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.resume-section h2:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #0099ff;
+}
+
+.resume-item {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid #e9ecef;
+  transition: border-color 0.3s;
+}
+
+.resume-item:hover {
+  border-left-color: #0099ff;
+}
+
+.resume-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.resume-item h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.resume-item h4 {
+  font-size: 1.1rem;
+  color: #0099ff;
+  font-weight: 600;
+}
+
+.resume-date {
+  color: #666;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.resume-details {
+  padding-left: 1.5rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.resume-details li {
+  margin-bottom: 0.5rem;
+}
+
+.resume-item.summary p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.skill-category h3 {
+  font-size: 1.3rem;
+  color: #0099ff;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.skill-category ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.skill-category li {
+  padding: 0.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  color: #555;
+}
+
+.skill-category li:before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #0099ff;
+}
+
+.certifications-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.certification {
+  background-color: #f8f9fa;
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.certification:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.certification h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.certification p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.resume-cta {
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.resume-cta h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.resume-cta p {
+  color: #666;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-btn {
+  display: inline-block;
+  background-color: #0099ff;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #007acc;
+}
+
+@media (max-width: 768px) {
+  .resume-item-header {
+    flex-direction: column;
+  }
+  
+  .resume-pdf-container {
+    margin: 3rem 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resume-content {
+    margin-top: 3rem;
+  }
+  
+  .resume-date {
+    margin-top: 0.5rem;
+  }
+  
+  .skills-grid, .certifications-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .resume-header h1 {
+    font-size: 2rem;
+  }
+}
