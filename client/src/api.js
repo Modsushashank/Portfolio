@@ -6,9 +6,10 @@
  */
 
 // The base URL for API requests
-// In production, this should be updated to your Render backend URL
+// In production, this points to Firebase Functions
+// In development, it points to the local Firebase emulator
 const API_URL = import.meta.env.PROD 
-  ? 'https://sushashank-portfolio-api.onrender.com' // Your Render backend URL
-  : 'http://localhost:5000';
+  ? 'https://us-central1-shashankreddy-portfolio.cloudfunctions.net/api' // Firebase Functions URL
+  : 'http://localhost:5001/shashankreddy-portfolio/us-central1/api'; // Local emulator URL
 
 export default API_URL;

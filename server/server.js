@@ -1,13 +1,22 @@
+// Import required modules
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import { onRequest } from 'firebase-functions/v2/https';
+import { initializeApp } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 import feedbackRoutes from './routes/feedback.js';
+
+// Initialize Firebase Admin
+initializeApp();
+const db = getFirestore();
 
 // Load environment variables
 dotenv.config();
 
+// Create Express app
 const app = express();
 
 // Middleware
@@ -30,10 +39,6 @@ const connectDB = async () => {
   } catch (err) {
     console.log('MongoDB Connection Error:', err.message);
     console.log('Server will run without database functionality.');
-    console.log('To enable database features, please:');
-    console.log('1. Make sure MongoDB is installed and running');
-    console.log('2. Check that the connection string is correct in .env file');
-    console.log('3. For local development, try using 127.0.0.1 instead of localhost');
     dbConnected = false;
   }
 };
@@ -43,11 +48,14 @@ connectDB();
 
 // Routes
 app.get('/api', (req, res) => {
-  res.send('API is running...');
+  res.json({ status: 'API is running...', dbConnected });
 });
 
 // Use routes
 app.use('/api/feedback', feedbackRoutes);
+
+// Export the Express app as a Cloud Function
+export const api = onRequest(app);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

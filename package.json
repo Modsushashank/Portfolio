@@ -1,29 +1,41 @@
 {
   "name": "portfolio-website",
   "version": "1.0.0",
-  "description": "Portfolio website with React frontend and Node.js/Express/MongoDB backend",
+  "description": "Portfolio website with React frontend and Node.js/Express/MongoDB backend deployed on Firebase",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node server/server.js",
-    "server": "nodemon server/server.js",
+    "start": "firebase emulators:start --only functions",
+    "build": "cd client && npm run build",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "deploy": "firebase deploy --only functions,hosting",
+    "logs": "firebase functions:log",
     "client": "cd client && npm run dev",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+    "dev": "concurrently \"npm run serve\" \"npm run client\"",
+    "install-all": "npm install && cd client && npm install && cd server && npm install"
   },
   "keywords": [
     "portfolio",
     "react",
     "nodejs",
     "express",
-    "mongodb"
+    "mongodb",
+    "firebase"
   ],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.0",
+    "firebase-admin": "^11.11.0",
+    "firebase-functions": "^4.5.0"
   },
   "devDependencies": {
+    "firebase-tools": "^12.6.0",
     "nodemon": "^3.0.1"
-  }
+  },
+  "engines": {
+    "node": "18"
+  },
+  "private": true
 }
