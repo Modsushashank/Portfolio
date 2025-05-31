@@ -1,0 +1,18 @@
+# Render configuration file
+# See https://render.com/docs/deploy-next-js#render-yaml-options
+
+builds:
+  - type: node
+    name: portfolio
+    env: node
+    buildCommand: npm install && cd client && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: portfolio-db
+          property: connectionString

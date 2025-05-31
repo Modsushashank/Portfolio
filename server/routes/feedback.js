@@ -1,6 +1,6 @@
-import express from 'express';
-import Feedback from '../models/Feedback.js';
-import mongoose from 'mongoose';
+const express = require('express');
+const mongoose = require('mongoose');
+const Feedback = require('../models/Feedback');
 
 const router = express.Router();
 
@@ -77,4 +77,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

@@ -30,6 +30,62 @@ A modern portfolio website built with React (frontend) and Node.js/Express/Mongo
 - MongoDB
 - Mongoose
 
+## Deployment
+
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB Atlas account (for database)
+- Render account (for deployment)
+
+### Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+# Server Configuration
+PORT=5001
+NODE_ENV=production
+
+# MongoDB Connection
+MONGODB_URI=your_mongodb_connection_string
+
+# CORS Origins (comma-separated)
+ALLOWED_ORIGINS=https://your-frontend-domain.com,http://localhost:3000
+```
+
+### Deploying to Render
+
+1. Push your code to a GitHub repository
+2. Log in to your [Render](https://render.com) account
+3. Click "New" and select "Web Service"
+4. Connect your GitHub repository
+5. Configure the following settings:
+   - **Name**: portfolio (or your preferred name)
+   - **Region**: Select the region closest to you
+   - **Branch**: main (or your main branch)
+   - **Build Command**: `npm install && cd client && npm install && npm run build`
+   - **Start Command**: `npm start`
+   - **Auto-Deploy**: Yes
+6. Add your environment variables from the `.env` file
+7. Click "Create Web Service"
+
+### Frontend Deployment (Netlify)
+
+The frontend is already deployed to Netlify. To update it:
+
+1. Push your changes to the main branch
+2. Netlify will automatically deploy the changes
+
+### Environment Variables for Frontend
+
+If you need to update environment variables for the frontend:
+
+1. Go to your Netlify dashboard
+2. Select your site
+3. Go to "Site settings" > "Build & deploy" > "Environment"
+4. Add or update environment variables as needed
+5. Trigger a new deploy
+
 ## Project Structure
 
 ```

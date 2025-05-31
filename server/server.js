@@ -1,42 +1,55 @@
 // Import required modules
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import { onRequest } from 'firebase-functions/v2/https';
-import { initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
-import feedbackRoutes from './routes/feedback.js';
-
-// Initialize Firebase Admin
-initializeApp();
-const db = getFirestore();
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const path = require('path');
 
 // Load environment variables
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 // Create Express app
 const app = express();
 
+// CORS configuration
+const allowedOrigins = process.env.ALLOWED_ORIGINS 
+  ? process.env.ALLOWED_ORIGINS.split(',').map(origin => origin.trim())
+  : ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174'];
+
 // Middleware
 app.use(cors({
-  origin: ['https://my-portfolio.windsurf.build', 'http://localhost:5173', 'http://localhost:5174'],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   credentials: true
 }));
-app.use(bodyParser.json());
-app.use(express.json());
 
-// MongoDB Connection
+// Log CORS configuration for debugging
+console.log('Allowed CORS origins:', allowedOrigins);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Import routes
+const feedbackRoutes = require('./routes/feedback');
+
+// Connect to MongoDB
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio';
 let dbConnected = false;
 
-// Function to connect to MongoDB
 const connectDB = async () => {
   try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error('MongoDB connection string not found in environment variables');
-    }
-    await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log('MongoDB Connected');
     dbConnected = true;
   } catch (err) {
@@ -46,7 +59,7 @@ const connectDB = async () => {
   }
 };
 
-// Attempt to connect to MongoDB
+// Connect to MongoDB
 connectDB();
 
 // API Routes
@@ -61,40 +74,18 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Feedback routes
+// Use feedback routes
 app.use('/api/feedback', feedbackRoutes);
 
-// 404 handler for /api/* routes
-app.use('/api/*', (req, res) => {
-  res.status(404).json({ 
-    success: false, 
-    error: 'API endpoint not found',
-    path: req.originalUrl
-  });
-});
-
-// Export the Express app as a Cloud Function
-export const api = onRequest(app);
-
-// For Vercel, we'll also export the Express app directly
-// This allows both Vercel and direct usage
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Serve static files from the React app in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
   });
 }
-
-export default app;
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
-    success: false,
-    error: 'Server Error'
-  });
-});
 
 // Handle 404 routes
 app.use((req, res) => {
@@ -104,8 +95,19 @@ app.use((req, res) => {
   });
 });
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: false,
+    error: 'Internal Server Error',
+    message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong!'
+  });
 });
+
+// Create the server but don't start listening yet
+const PORT = process.env.PORT || 5001;
+const server = require('http').createServer(app);
+
+// Export the app and server instances
+module.exports = { app, server };
