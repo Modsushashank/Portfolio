@@ -33,11 +33,14 @@ let dbConnected = false;
 // Function to connect to MongoDB
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shashankreddy:Shashi22@cluster0.pf1tu.mongodb.net/dup?retryWrites=true&w=majority&appName=Cluster0');
+    if (!process.env.MONGODB_URI) {
+      throw new Error('MongoDB connection string not found in environment variables');
+    }
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB Connected');
     dbConnected = true;
   } catch (err) {
-    console.log('MongoDB Connection Error:', err.message);
+    console.error('MongoDB Connection Error:', err.message);
     console.log('Server will run without database functionality.');
     dbConnected = false;
   }
@@ -46,16 +49,43 @@ const connectDB = async () => {
 // Attempt to connect to MongoDB
 connectDB();
 
-// Routes
+// API Routes
 app.get('/api', (req, res) => {
-  res.json({ status: 'API is running...', dbConnected });
+  res.json({ 
+    status: 'API is running...', 
+    dbConnected,
+    endpoints: [
+      'GET /api',
+      'POST /api/feedback'
+    ]
+  });
 });
 
-// Use routes
+// Feedback routes
 app.use('/api/feedback', feedbackRoutes);
+
+// 404 handler for /api/* routes
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ 
+    success: false, 
+    error: 'API endpoint not found',
+    path: req.originalUrl
+  });
+});
 
 // Export the Express app as a Cloud Function
 export const api = onRequest(app);
+
+// For Vercel, we'll also export the Express app directly
+// This allows both Vercel and direct usage
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+export default app;
 
 // Error handling middleware
 app.use((err, req, res, next) => {
