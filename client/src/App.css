@@ -1,8 +1,8 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 /* Import Font Awesome for icons */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 
 /* Reset and Base Styles */
 * {
@@ -11,7 +11,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
@@ -20,7 +21,7 @@ html, body {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #f8f9fa;
   color: #333;
   line-height: 1.6;
@@ -87,7 +88,7 @@ img {
 }
 
 .btn-primary:hover {
-  background-color: #007acc;
+  color: #fff;
 }
 
 .btn-secondary {
@@ -121,19 +122,19 @@ img {
   h1 {
     font-size: 2.2rem;
   }
-  
+
   h2 {
     font-size: 1.7rem;
   }
-  
+
   h3 {
     font-size: 1.3rem;
   }
-  
+
   .container {
     padding: 0 1.5rem;
   }
-  
+
   .btn {
     padding: 0.7rem 1.3rem;
   }
@@ -144,23 +145,23 @@ img {
   h1 {
     font-size: 2rem;
   }
-  
+
   h2 {
     font-size: 1.5rem;
   }
-  
+
   h3 {
     font-size: 1.2rem;
   }
-  
+
   p {
     font-size: 0.95rem;
   }
-  
+
   .container {
     padding: 0 1rem;
   }
-  
+
   .btn {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
@@ -172,30 +173,30 @@ img {
   h1 {
     font-size: 1.8rem;
   }
-  
+
   h2 {
     font-size: 1.4rem;
   }
-  
+
   h3 {
     font-size: 1.1rem;
   }
-  
+
   p {
     font-size: 0.9rem;
   }
-  
+
   .container {
     padding: 0 0.8rem;
   }
-  
+
   .btn {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
     width: 100%;
     margin-bottom: 0.5rem;
   }
-  
+
   .section {
     padding: 1.5rem 0;
   }
@@ -206,11 +207,11 @@ img {
   h1 {
     font-size: 1.6rem;
   }
-  
+
   h2 {
     font-size: 1.3rem;
   }
-  
+
   .container {
     padding: 0 0.6rem;
   }

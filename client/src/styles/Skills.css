@@ -95,10 +95,14 @@
   max-width: 900px;
 }
 
-.frontend-skills, .backend-skills, .tools-skills, .soft-skills, .certifications {
+.frontend-skills,
+.backend-skills,
+.tools-skills,
+.soft-skills,
+.certifications {
   padding: 1.5rem;
   background-color: white;
-  color:#007acc;
+  color: #007acc;
   border: 2px solid #000000;
   border-radius: 8px;
   height: 250px;
@@ -165,7 +169,7 @@
 }
 
 .skill-category h2:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 50%;
@@ -189,6 +193,22 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.25rem;
+}
+
+.skill-icon {
+  font-size: 1.5rem;
+  color: #0099ff;
+  transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.2);
+}
+
+.icon-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .skill-info h3 {
@@ -239,7 +259,8 @@
   margin-bottom: 4rem;
 }
 
-.skills-learning h2, .skills-certifications h2 {
+.skills-learning h2,
+.skills-certifications h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   color: #333;
@@ -279,18 +300,21 @@
   text-align: right;
 }
 
-.learning-item:hover, .certification-item:hover {
+.learning-item:hover,
+.certification-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.learning-item h3, .certification-item h3 {
+.learning-item h3,
+.certification-item h3 {
   font-size: 1.3rem;
   margin-bottom: 0.8rem;
   color: #0099ff;
 }
 
-.learning-item p, .certification-item p {
+.learning-item p,
+.certification-item p {
   color: #666;
   line-height: 1.5;
 }
@@ -299,20 +323,20 @@
   .skills-container {
     padding: 2rem 1rem;
   }
-  
+
   .skills-header h1 {
     font-size: 2rem;
   }
-  
+
   .skill-category h2 {
     font-size: 1.4rem;
   }
-  
+
   .skill-grid {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
   }
-  
+
   .frontend-skills,
   .backend-skills,
   .tools-skills,
@@ -320,10 +344,10 @@
     padding: 1rem;
     height: 220px;
   }
-  
-  .frontend-skills h2, 
-  .backend-skills h2, 
-  .tools-skills h2, 
+
+  .frontend-skills h2,
+  .backend-skills h2,
+  .tools-skills h2,
   .soft-skills h2 {
     font-size: 1.4rem;
     margin-bottom: 0.8rem;
@@ -334,7 +358,7 @@
   .skill-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .frontend-skills,
   .backend-skills,
   .tools-skills,
