@@ -1,40 +1,30 @@
 {
   "name": "portfolio-website",
   "version": "1.0.0",
-  "description": "Portfolio website with React frontend and Node.js/Express/MongoDB backend",
-  "main": "index.js",
-  "type": "commonjs",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "build": "cd client && npm install && npm run build",
-    "client": "cd client && npm run dev",
-    "server": "nodemon server/server.js",
-    "install-all": "npm install && cd client && npm install && cd server && npm install"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
-  "keywords": [
-    "portfolio",
-    "react",
-    "nodejs",
-    "express",
-    "mongodb",
-    "firebase"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.20.2",
-    "concurrently": "^8.2.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.21.2",
-    "mongoose": "^8.0.1"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.6.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.5.0",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "vite": "^6.3.5"
   },
   "engines": {
-    "node": ">=14.0.0"
-  },
-  "private": true
+    "node": ">=18.0.0"
+  }
 }

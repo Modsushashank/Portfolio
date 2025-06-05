@@ -1,19 +1,3 @@
-# Dependencies
-node_modules/
-/.pnp
-.pnp.js
-
-# Production build files
-/client/dist
-/client/build
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
 # Logs
 logs
 *.log
@@ -22,6 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
 
 # Editor directories and files
 .vscode/*
@@ -33,12 +22,3 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
-
-# Misc
-.DS_Store
-Thumbs.db
-
-.vercel
-
-# Local Netlify folder
-.netlify
